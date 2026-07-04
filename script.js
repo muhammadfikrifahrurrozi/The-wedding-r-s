@@ -45,7 +45,7 @@ function openInvitation() {
    ===================================================== */
 function startCountdown() {
   // ⚙️ GANTI TANGGAL SESUAI HARI H
-  const target = new Date('2026-06-29T08:00:00');
+  const target = new Date('2026-07-11T08:00:00');
 
   function tick() {
     const now = new Date();
