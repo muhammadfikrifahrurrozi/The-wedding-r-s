@@ -686,13 +686,15 @@ section {
   z-index: 1;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.6rem;
-  max-width: 800px;
-  width: 100%;
-  z-index: 1;
+@media (min-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "main main a"
+      "main main b"
+      "c    d    .";
+  }
+  .gallery-item:nth-child(1) { aspect-ratio: auto; }
 }
 
 .gallery-item {
@@ -1490,168 +1492,149 @@ section {
   100% { transform: rotateX(0deg);   opacity: 1; }
 }
 
-
 /* =====================================================
-   RESPONSIVE DESIGN (Tampilan Mobile & Tablet Kecil)
-   Berlaku untuk ukuran layar 768px ke bawah
+   RESPONSIVE — TABLET (≤ 900px)
    ===================================================== */
-@media (max-width: 768px) {
-  
-  /* 1. PENYESUAIAN TEKS GLOBAL (TYPOGRAPHY) */
-  /* Mengecilkan ukuran font judul agar tidak terpotong */
-  h1 { font-size: 2.2rem !important; }
-  h2, .section-heading { font-size: 1.8rem !important; margin-bottom: 2rem !important; }
-  h3 { font-size: 1.4rem !important; }
-  p { font-size: 0.9rem !important; line-height: 1.6; }
-  
-  /* 2. SECTION PENGANTAR / HERO (Cover Undangan) */
-  #hero {
-    padding: 4rem 1rem;
-    background-attachment: scroll; /* Mencegah bug parallax di HP */
-  }
-  
-  /* 3. SECTION MEMPELAI (Couple) */
-  /* Mengubah posisi mempelai yang tadinya bersebelahan menjadi atas-bawah */
-  .couple-container, 
-  .couple-row {
-    flex-direction: column !important;
-    text-align: center;
-    gap: 2rem;
-  }
-  
-  .couple-profile {
-    width: 100% !important;
-    margin-bottom: 1.5rem;
-  }
-  
-  .couple-photo {
-    width: 180px !important;
-    height: 180px !important;
-    margin: 0 auto 1rem auto;
+@media (max-width: 900px) {
+  section {
+    padding: 4.5rem 1.5rem;
   }
 
-  /* 4. SECTION ACARA (Event - Akad & Resepsi) */
-  /* Menyusun kartu acara menjadi 1 kolom penuh */
-  .event-container,
-  .event-cards {
-    flex-direction: column !important;
-    align-items: center;
+  .couple-grid {
     gap: 1.5rem;
   }
 
-  .event-card {
-    width: 100% !important;
-    padding: 1.5rem !important;
-  }
-
-  /* 5. SECTION COUNTDOWN (Hitung Mundur) */
-  .countdown-wrapper {
-    flex-wrap: wrap !important;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .countdown-item {
-    width: calc(50% - 10px); /* Menjadikan kotak countdown 2 baris di HP */
-    margin-bottom: 10px;
-    padding: 1rem 0;
-  }
-
-  /* SECTION LOVE STORY */
-  .timeline::after {
-    left: 20px;
-    margin-left: 0;
-  }
-  
-  /* 2. Buat kontainer cerita menjadi 100% lebar (satu kolom) */
   .story-container {
-    width: 100%;
-    padding-left: 60px; /* Jarak aman agar teks tidak menabrak garis */
-    padding-right: 15px;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* 3. Ratakan kiri semua sisi, baik yang awalnya di kiri maupun kanan */
-  .story-container.left,
-  .story-container.right {
-    left: 0;
-    text-align: left;
-  }
-  
-  /* 4. Sesuaikan posisi titik hati (icon ❤) agar pas di tengah garis baru */
-  .story-container.left::after,
-  .story-container.right::after {
-    left: 8px; /* Disesuaikan agar sejajar dengan left: 20px pada garis */
-    top: 22px;
-  }
-  
-  /* 5. Sedikit perkecil ukuran teks agar lebih proporsional di HP */
-  .story-title {
-    font-size: 1.4rem;
-  }
-  
-  .story-desc {
-    font-size: 0.8rem;
-  }
-  
-  .story-content {
-    padding: 1.2rem;
+    padding: 10px 25px;
   }
 }
 
-  /* 6. SECTION GALERI FOTO (Gallery Grid) */
-  /* Mengubah galeri dari 3-4 kolom menjadi 2 kolom atau 1 kolom */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) !important; /* Ubah ke '1fr' jika ingin 1 kolom besar */
-    gap: 10px !important;
-    padding: 0 10px;
+/* =====================================================
+   RESPONSIVE — MOBILE (≤ 640px)
+   ===================================================== */
+@media (max-width: 640px) {
+  section {
+    padding: 4rem 1.2rem;
+    min-height: auto; /* biar section tidak maksa 100vh kalau kontennya pendek */
   }
 
-  /* 7. SECTION RSVP & UCAPAN */
-  .rsvp-form,
-  .wishes-container {
-    width: 100% !important;
-    padding: 1.5rem 1rem !important;
+  /* Envelope */
+  .envelope-wrap {
+    width: 280px;
+    height: 190px;
   }
 
-  input, textarea, select {
-    width: 100% !important;
-    font-size: 16px !important; /* Mencegah auto-zoom saat mengetik di iPhone */
+  .wax-seal {
+    width: 60px;
+    height: 60px;
+    font-size: 1.1rem;
   }
 
-  /* 8. SECTION HADIAH (Gift / Amplop Digital) */
-  .bank-account,
-  .wallet-card {
-    width: 100% !important;
-    margin-bottom: 1rem;
-    padding: 1.5rem !important;
+  .env-names {
+    font-size: 1.5rem;
   }
 
-  /* 9. NAVIGASI BAWAH (Bottom Bar) */
-  /* Jika Anda menggunakan menu navigasi yang menempel di bawah */
-  .bottom-nav {
-    padding: 10px 5px !important;
+  .env-tagline {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
   }
-  
-  .bottom-nav ul li a {
-    font-size: 0.7rem !important;
+
+  /* Couple section: tumpuk vertikal, hilangkan gap besar */
+  .couple-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
-  
-  .bottom-nav ul li a i {
-    font-size: 1.2rem !important;
-    margin-bottom: 3px;
+
+  .couple-sep {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
   }
+
+  .couple-avatar {
+    width: 130px;
+    height: 130px;
+  }
+
+  .couple-name {
+    font-size: 1.7rem;
+  }
+
+  /* Timeline: satu kolom penuh, hilangkan efek kiri-kanan */
+  .timeline::after {
+    left: 20px;
+  }
+
+  .story-container,
+  .story-container.left,
+  .story-container.right {
+    width: 100%;
+    left: 0;
+    padding: 10px 10px 10px 50px;
+    text-align: left;
+  }
+
+  .story-container::after,
+  .story-container.right::after {
+    left: 8px;
+    right: auto;
+  }
+
+  /* Countdown: 2x2 rapi */
+  .countdown-grid {
+    gap: 0.8rem;
+  }
+
+  .count-box {
+    min-width: calc(50% - 0.4rem);
+    padding: 1.3rem 1rem;
+  }
+
+  /* Nav dot: sembunyikan di mobile supaya tidak menutupi konten */
+  .scroll-nav {
+    display: none;
+  }
+
+  /* RSVP form */
+  .rsvp-form {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Gift card tetap dari media query kamu yang sudah ada */
+
+  /* Music button lebih kecil biar tidak dominan */
+  #music-btn {
+    width: 44px;
+    height: 44px;
+    bottom: 1.2rem;
+    right: 1.2rem;
+  }
+}
 
 /* =====================================================
-   PENYESUAIAN EKSTRA UNTUK LAYAR SANGAT KECIL (Misal: iPhone SE)
+   RESPONSIVE — MOBILE KECIL (≤ 380px)
    ===================================================== */
-@media (max-width: 400px) {
-  h1 { font-size: 1.8rem !important; }
-  h2, .section-heading { font-size: 1.5rem !important; }
-  
-  /* Ubah galeri menjadi 1 kolom penuh di layar sangat sempit */
-  .gallery-grid {
-    grid-template-columns: 1fr !important;
+@media (max-width: 380px) {
+  .envelope-wrap {
+    width: 240px;
+    height: 165px;
+  }
+
+  .couple-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .event-card {
+    min-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .countdown-grid {
+    gap: 0.6rem;
+  }
+
+  .count-box {
+    min-width: calc(50% - 0.3rem);
+    padding: 1rem 0.8rem;
   }
 }
