@@ -709,7 +709,7 @@ section {
   position: relative;
 }
 
-.gallery-item:nth-child(1) { grid-area: main; aspect-ratio: 8 / 4; }
+.gallery-item:nth-child(1) { grid-area: main; aspect-ratio: 4 / 3; }
 .gallery-item:nth-child(2) { grid-area: a; aspect-ratio: 1; }
 .gallery-item:nth-child(3) { grid-area: b; aspect-ratio: 1; }
 .gallery-item:nth-child(4) { grid-area: c; aspect-ratio: 1; }
@@ -1631,6 +1631,14 @@ section {
     height: 44px;
     bottom: 1.2rem;
     right: 1.2rem;
+  }
+
+  .gallery-item:nth-child(1) {
+    aspect-ratio: 3 / 4;
+  }
+  
+   .gallery-item:nth-child(1) img {
+    object-position: center 30%;
   }
 }
 
