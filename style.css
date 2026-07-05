@@ -686,6 +686,36 @@ section {
   z-index: 1;
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "main main"
+    "a b"
+    "c d";
+  gap: 0.6rem;
+  max-width: 800px;
+  width: 100%;
+  z-index: 1;
+}
+
+.gallery-item {
+  background: linear-gradient(135deg, #2a1c08, #1a1208);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.gallery-item:nth-child(1) { grid-area: main; aspect-ratio: 4 / 3; }
+.gallery-item:nth-child(2) { grid-area: a; aspect-ratio: 1; }
+.gallery-item:nth-child(3) { grid-area: b; aspect-ratio: 1; }
+.gallery-item:nth-child(4) { grid-area: c; aspect-ratio: 1; }
+.gallery-item:nth-child(5) { grid-area: d; aspect-ratio: 1; }
+
+/* Tablet & Desktop (≥640px): foto utama di kiri, 4 foto kecil membentuk 2x2 di kanan */
 @media (min-width: 640px) {
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -697,15 +727,9 @@ section {
   .gallery-item:nth-child(1) { aspect-ratio: auto; }
 }
 
-.gallery-item {
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, #2a1c08, #1a1208);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
+/* Desktop besar (≥1024px): sedikit lega */
+@media (min-width: 1024px) {
+  .gallery-grid { max-width: 900px; }
 }
 
 .gallery-item img {
