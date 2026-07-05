@@ -718,13 +718,13 @@ section {
 /* Tablet & Desktop (≥640px): foto utama di kiri, 4 foto kecil membentuk 2x2 di kanan */
 @media (min-width: 640px) {
   .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       "main main a"
       "main main b"
       "c    d    .";
   }
-  .gallery-item:nth-child(1) { aspect-ratio: auto; }
+  .gallery-item:nth-child(1) { aspect-ratio: 5 / 4; }
 }
 
 /* Desktop besar (≥1024px): sedikit lega */
@@ -1631,14 +1631,6 @@ section {
     height: 44px;
     bottom: 1.2rem;
     right: 1.2rem;
-  }
-
-  .gallery-item:nth-child(1) {
-    aspect-ratio: 3 / 4;
-  }
-  
-   .gallery-item:nth-child(1) img {
-    object-position: center 30%;
   }
 }
 
