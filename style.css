@@ -724,7 +724,7 @@ section {
       "main main b"
       "c    d    .";
   }
-  .gallery-item:nth-child(1) { aspect-ratio: 3 / 4; }
+  .gallery-item:nth-child(1) { grid-area: main; aspect-ratio: 4 / 3; }
 }
 
 /* Desktop besar (≥1024px): sedikit lega */
@@ -738,12 +738,6 @@ section {
   object-fit: cover;
   object-position: center 30%;
   display: block;
-}
-
-.gallery-item:first-child {
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
-  aspect-ratio: auto;
 }
 
 .gallery-item:hover .gallery-overlay {
